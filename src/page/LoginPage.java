@@ -4,6 +4,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.Reporter;
 
 public class LoginPage {
 
@@ -28,6 +32,18 @@ public class LoginPage {
 
 	public void clickLoginBtn() {
 		loginBtn.click();
+	}
+
+	public void verifyErrMsgIsDisplayed(WebDriver driver) {
+		WebDriverWait wait=new WebDriverWait(driver,10);
+		try {
+			wait.until(ExpectedCondition.VisibilityOf(errMsg));
+			Reporter.log("Error Message is Dispalyed",true);
+		}catch(Exception e) {
+			Reporter.log("Error Message is Not Dispalyed",true);
+			Assert.fail();
+		}
+		
 	}
 	
 }
