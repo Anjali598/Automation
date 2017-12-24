@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
-  <test name="Test(failed)">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]" parallel="tests">
+  <test name="Test(failed)" parallel="tests">
+    <parameter name="browser" value="chrome"/>
     <classes>
       <class name="script.ValidLogin">
         <methods>
@@ -10,13 +11,6 @@
           <include name="openApplication"/>
         </methods>
       </class> <!-- script.ValidLogin -->
-      <class name="script.InvalidLogin">
-        <methods>
-          <include name="testInvalidLogin"/>
-          <include name="closeApplication"/>
-          <include name="openApplication"/>
-        </methods>
-      </class> <!-- script.InvalidLogin -->
       <class name="script.CheckProductVersion">
         <methods>
           <include name="testCheckProductVersion"/>
@@ -24,6 +18,13 @@
           <include name="openApplication"/>
         </methods>
       </class> <!-- script.CheckProductVersion -->
+      <class name="script.InvalidLogin">
+        <methods>
+          <include name="testInvalidLogin"/>
+          <include name="closeApplication"/>
+          <include name="openApplication"/>
+        </methods>
+      </class> <!-- script.InvalidLogin -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->
